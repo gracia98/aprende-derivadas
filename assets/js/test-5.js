@@ -218,13 +218,7 @@ function checker(userOption) {
     userOption.classList.add("incorrect");
     //nextBtn.classList.remove("disabled");
     //For marking the correct option
-    options.forEach((element) => {
-      if (
-        element.getAttribute("mathOption") == quizLv1[questionCount].correct
-      ) {
-        element.classList.add("correct");
-      }
-    });
+    
     //muestra la alerta de reinicio
     restartAlertDisplay();
   }
