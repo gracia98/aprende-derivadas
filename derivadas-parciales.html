@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Derivadas Parciales - Aprende Derivadas</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.ico" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <link rel="manifest" href="/assets/json/manifest.json">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="index.html">Aprende Derivadas</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="about.html">Nosotros</a></li>
+          <li><a class="active" href="courses.html">Temas</a></li>
+          <li><a href="test.html">Tests</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+      <div class="container">
+        <h2>Derivadas Parciales</h2>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Cource Details Section ======= -->
+    <section id="course-details" class="course-details">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-8">
+            <img src="assets/img/course-2.png" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-4">
+            <div class="bg-primary py-3 px-3">
+              <h6 class="text-warning">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bulb" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#ffc107" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"></path>
+                  <path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3"></path>
+                  <path d="M9.7 17l4.6 0"></path>
+               </svg>Dato Importante
+              </h6>
+              <p class="text-white">Hay que tener claro que cuando derivamos con respecto a "X", la "Y" se comporta como un número.</p>
+              <h6 class="text-warning">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bulb" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#ffc107" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"></path>
+                  <path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3"></path>
+                  <path d="M9.7 17l4.6 0"></path>
+               </svg>¿Sabías qué?
+              </h6>
+              <p class="text-white">El (0) es el signo numérico de valor nulo, que en notación posicional ocupa los lugares donde no hay otra cifra significativa.</p>
+            </div>
+          </div>
+            <h3>Derivadas Parciales</h3>
+
+            <p>&nbsp;&nbsp;&nbsp; Las derivadas parciales de una función con varias variables f(x , y, z) (tres en este caso) nos informa de cómo cambia la función (df) cuando se produce un pequeño cambio en una única variable independiente (por ejemplo dx en la variable x).</p>
+            <p>&nbsp;&nbsp;&nbsp;Como ahora no estamos ante una función y = f(x) que varía cuando cambia la única variable independiente x de esa función, sino que hay varias variables, para subrayar que se trata de cambios en la función multivariable utilizaremos el símbolo ∂ para distinguirlo del símbolo d, que es el que indica un pequeño cambio en el caso de las funciones ordinarias.</p> 
+            <p>&nbsp;&nbsp;&nbsp;Las derivadas parciales de una función multivariable las definiremos también mediante un límite, si este límite existiera, haciendo extensiva la definición de una derivada ordinaria.</p>
+          </div>
+        </div>
+    </section>
+    <!-- ======= Cource Details Tabs Section ======= -->
+    <section id="cource-details-tabs" class="cource-details-tabs">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-3">
+            <ul class="nav nav-tabs flex-column">
+              <li class="nav-item">
+                <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Tips 1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Tips 2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Tips 3</a>
+              </li>
+              </ul>
+          </div>
+          <div class="col-lg-9 mt-4 mt-lg-0">
+            <div class="tab-content">
+              <div class="tab-pane active show" id="tab-1">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>¿Cómo encontrar derivadas parciales de funciones?</h3>
+                    <p class="fst-italic">Paso 1</p>
+                    <p>Escribe la función en términos de las variables con respecto a las cuales quieres diferenciarla.</p>
+                  <img src="assets/img/paso1.jpg" alt="" class="img-fluid">
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="assets/img/tips1.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-2">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>¿Cómo encontrar funciones?</h3>
+                    <p class="fst-italic">Paso 2</p>
+                    <img src="assets/img/paso2.jpg" alt="" class="img-fluid">
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="assets/img/tips2.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-3">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>¿Variables, Constantes, Derivadas?</h3>
+                    <p class="fst-italic">Paso 3</p>
+                    <img src="assets/img/paso3.jpg" alt="" class="img-fluid">
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="assets/img/tips3.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End #main -->
+    <section  id="course-details" class="course-details">
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+          <div class="col-lg-12">
+            <h3>Ejercicios Resueltos</h3>
+
+            <div class="ejercicio1 mb-5">
+              <div class="row">
+                <div class="col-lg-12">
+                  <img src="assets/img/ejercicio1.jpg" class="img-fluid" alt="">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Solucion #1
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <img src="assets/img/solucion1.jpg" alt="" class="img-fluid">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-4">
+            </div>
+
+            <div class="ejercicio2 mb-5">
+              <div class="row">
+                <div class="col-lg-12">
+                  <img src="assets/img/ejercicio2.jpg" class="img-fluid" alt="">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                          Solucion #2
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <img src="assets/img/solucion2.jpg" alt="" class="img-fluid">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-4">
+            </div>
+
+            <div class="ejercicio3 mb-5">
+              <div class="row">
+                <div class="col-lg-12">
+                  <img src="assets/img/ejercicio3.jpg" class="img-fluid" alt="">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                          Solucion #3
+                        </button>
+                      </h2>
+                      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <img src="assets/img/solucion3.jpg" alt="" class="img-fluid">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-4">
+            </div>
+
+            <div class="ejercicio4 mb-5">
+              <div class="row">
+                <div class="col-lg-12">
+                  <img src="assets/img/ejercicio4.jpg" class="img-fluid" alt="">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                          Solucion #4
+                        </button>
+                      </h2>
+                      <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <img src="assets/img/solucion4.jpg" alt="" class="img-fluid">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-4">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+          </div>
+        </div>
+      </div>
+  </main><!-- End #main -->  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Aprende derivadas</h3>
+            <p>
+              Apure<br>
+              Calle Bolívar, a una cuadra de la plaza Bolívar, San Fernando<br>
+              Venezuela <br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Enlaces</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="./index.html">Inicio</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="./about.html">Nosotros</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="./courses.html">Temas</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; <strong><span>Aprender Derivadas</span></strong>. Todos los derechos reservados
+        </div>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
