@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Derivadas</title>
+    <!-- Favicons -->
+    <link href="assets/img/favicon.ico" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="assets/css/test.css" />
+
+    <link rel="manifest" href="/assets/json/manifest.json" />
+    <script src="assets/js/deriv.js"></script>
+    <!-- MathJax API -->
+    <script>
+      MathJax = {
+        loader: { load: ["input/asciimath", "output/chtml"] },
+      };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+  <body>
+    <style>
+      .derive-input span {
+        background-color: #404e72;
+        color: #fff;
+        border-color: #404e72;
+      }
+
+      .derive-input input {
+        background-color: #182034;
+        color: #fff;
+        border-color: #182034;
+      }
+
+      .derive-input input:focus {
+        background-color: #182034;
+        color: #fff;
+        border-color: #182034;
+        box-shadow: none;
+        z-index: auto !important;
+      }
+
+      .derive-input button,
+      .derive-input button:hover,
+      .derive-input button:focus,
+      .derive-input button:active {
+        background-color: #d03f2f !important;
+        color: #fff !important;
+        border-color: #d03f2f !important;
+        transition: opacity 0.3s ease;
+      }
+
+      .derive-input button:hover {
+        opacity: 0.6;
+      }
+
+      .btn-clr {
+        background-color: #637097;
+        box-shadow: #404e72 0px 3px 0px;
+        color: #ffffff;
+        transition: opacity 0.3s ease;
+      }
+
+      .calc-pad button {
+        background-color: #ffffff;
+        box-shadow: #a69d91 0px 3px 0px;
+        color: #444b5a;
+        transition: opacity 0.3s ease;
+      }
+
+      .btn-clr:hover {
+        background-color: #637097;
+        color: #ffffff;
+        opacity: 0.6;
+      }
+
+      .calc-pad button:hover {
+        background-color: #ffffff;
+        color: #444b5a;
+        opacity: 0.6;
+      }
+
+      .derive-outputs {
+        min-height: 150px;
+        background-color: #182034;
+      }
+
+      .derive-outputs h6 {
+        color: #e3e3e3;
+      }
+
+      .instrucciones {
+        top: 1rem;
+        right: 1rem;
+        padding: 2px !important;
+        border: 1.5px solid #fff !important;
+        background-color: transparent;
+        color: #fff;
+      }
+
+      .instrucciones span {
+        width: 16px;
+        height: 16px;
+        display: block;
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      .instrucciones:hover {
+        background-color: #fff;
+        color: #444b5a;
+      }
+
+      .tooltip {
+        white-space: pre-line;
+      }
+    </style>
+    <div class="container py-5">
+      <div
+        class="calculadora p-4 rounded-4 mx-auto shadow text-center text-white position-relative"
+        style="max-width: 400px; background-color: #232c43"
+      >
+        <h5 class="mb-4">Calculadora de Derivadas</h5>
+        <button
+          type="button"
+          class="btn btn-light rounded-circle position-absolute instrucciones"
+          data-bs-toggle="tooltip"
+          data-bs-title='Ingrese una función y haga clic en "Calc." para obtener su derivada (especificando los repectivos operadores). Ej.: 
+          "3*x^2" ⟶ "6 * x"
+          "sqrt(x^2)" ⟶ "x / sqrt(x^2)"
+          "sin(x)+3*x" ⟶ "cos(x) + 3"
+          "e^(2*x)" ⟶ "2 * e^(2 * x)"
+          "ln(x^2)" ⟶ "2 / x"
+          
+          Funciones soportadas: ln, sqrt(√), sin, cos, tan, cot, sec, csc'
+        >
+          <span>?</span>
+        </button>
+        <div class="input-group mb-4 derive-input">
+          <span class="input-group-text">f(x) = </span>
+          <input type="text" id="derive-input" value="" class="form-control" />
+          <button class="btn" id="derive-button">Calc.</button>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col-3">
+            <button
+              onclick="clearDerive()"
+              class="btn btn-clr h-100 w-100 fw-bold"
+              type="button"
+            >
+              CLR
+            </button>
+          </div>
+          <div class="col-9 calc-pad">
+            <div class="row mb-3">
+              <div class="col-4">
+                <button
+                  onclick="writeOperator('+')"
+                  class="btn w-100 fw-bold"
+                  type="button"
+                >
+                  +
+                </button>
+              </div>
+              <div class="col-4">
+                <button
+                  onclick="writeOperator('-')"
+                  class="btn w-100 fw-bold"
+                  type="button"
+                >
+                  -
+                </button>
+              </div>
+              <div class="col-4">
+                <button
+                  onclick="writeOperator('*')"
+                  class="btn w-100 fw-bold"
+                  type="button"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-4">
+                <button
+                  onclick="writeOperator('/')"
+                  class="btn w-100 fw-bold"
+                  type="button"
+                >
+                  ÷
+                </button>
+              </div>
+              <div class="col-4">
+                <button
+                  onclick="writeOperator('^')"
+                  class="btn w-100 fw-bold"
+                  type="button"
+                >
+                  ^
+                </button>
+              </div>
+              <div class="col-4">
+                <button
+                  onclick="writeOperator('sqrt')"
+                  class="btn w-100 fw-bold"
+                  type="button"
+                >
+                  √
+                </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <button
+                  onclick="writeOperator('e')"
+                  class="btn w-100 fw-bold"
+                  type="button"
+                >
+                  e
+                </button>
+              </div>
+              <div class="col-4">
+                <button
+                  onclick="writeOperator('(')"
+                  class="btn w-100 fw-bold"
+                  type="button"
+                >
+                  (
+                </button>
+              </div>
+              <div class="col-4">
+                <button
+                  onclick="writeOperator(')')"
+                  class="btn w-100 fw-bold"
+                  type="button"
+                >
+                  )
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 p-3 rounded derive-outputs">
+          <h6 class="text-start fw-semibold mb-4">Usted va a derivar:</h6>
+          <p id="preview" class="fs-5"></p>
+        </div>
+
+        <div class="p-3 rounded derive-outputs">
+          <h6 class="text-start fw-semibold mb-4">Resultado:</h6>
+          <p>
+            <span id="derive-output" class="fs-5 link-info"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <!--
+    <p>Supported operators: +, -, *, /, ^.</p>
+    <p>
+      Supported functions:<br />
+      exp, ln, log10, log2, sqrt,<br />
+      sin, cos, tan, cot, sec, csc,<br />
+      asin, acos, atan, acot, asec, acsc,<br />
+      sinh, cosh, tanh, coth, sech, csch,<br />
+      asinh, acosh, atanh, acoth, asech, acsch.
+    </p>
+    -->
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <!-- Script -->
+    <script>
+      let deriveBtn = document.querySelector("#derive-button"),
+        derivePreview = document.querySelector("#preview"),
+        deriveInput = document.querySelector("#derive-input"),
+        deriveOutput = document.querySelector("#derive-output");
+
+      deriveBtn.addEventListener("click", () => {
+        try {
+          let expression = deriveInput.value;
+          let derivative = derive(expression);
+          deriveOutput.className = "fs-5 link-info";
+          deriveOutput.textContent = "`" + `f'(x) = ${derivative}` + "`";
+          console.log(`f'(x) = ${derivative}`);
+          MathJax.typesetPromise();
+        } catch (e) {
+          deriveOutput.className = "fs-5 link-danger";
+          deriveOutput.textContent = `ERROR: ${e}`;
+          console.log(e);
+        }
+      });
+
+      deriveInput.addEventListener("keydown", (e) => {
+        if (e.code == "Enter" || e.code == "NumpadEnter") {
+          deriveBtn.click();
+        }
+      });
+
+      deriveInput.oninput = (e) => {
+        renderPreview();
+      };
+
+      const renderPreview = () => {
+        derivePreview.textContent = "`" + `f(x) = ${deriveInput.value}` + "`";
+        MathJax.typesetPromise();
+      };
+
+      const clearDerive = () => {
+        deriveInput.value = "";
+        deriveOutput.textContent = "";
+        derivePreview.textContent = "";
+      };
+
+      const writeOperator = (operator) => {
+        let cursorPos = deriveInput.selectionStart,
+          oldText = deriveInput.value,
+          newText = "";
+
+        newText =
+          oldText.slice(0, cursorPos) + operator + oldText.slice(cursorPos);
+
+        deriveInput.value = newText;
+        deriveInput.selectionStart = cursorPos + operator.length;
+        deriveInput.selectionEnd = cursorPos + operator.length;
+
+        renderPreview();
+        deriveInput.focus();
+      };
+
+      window.onload = () => {
+        renderPreview();
+        const tooltipTriggerList = document.querySelectorAll(
+          '[data-bs-toggle="tooltip"]'
+        );
+        const tooltipList = [...tooltipTriggerList].map(
+          (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+        );
+      };
+    </script>
+  </body>
+</html>
