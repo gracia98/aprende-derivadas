@@ -5,7 +5,7 @@ if('serviceWorker' in navigator) {
 }
 
 /* 
-
+PWA
 Otra forma de registrar el SW
 
 if('serviceWorker' in navigator) {
