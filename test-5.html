@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test - Aprende Derivadas</title>
     <!-- Favicons -->
@@ -51,7 +52,11 @@
             <div class="card-body d-flex flex-column">
               <div class="row d-flex justify-content-center">
                 <div class="col-md-4">
-                  <img src="assets/img/test/test-5.jpg" class="img-fluid" alt="">
+                  <img
+                    src="assets/img/test/test-5.jpg"
+                    class="img-fluid"
+                    alt=""
+                  />
                 </div>
               </div>
               <h2 class="card-title my-4 text-center">
@@ -60,7 +65,9 @@
               <div class="pb-4">
                 <div class="start-screen">
                   <button id="start-button">Iniciar</button>
-                  <a href="index.html" class="btn btn-outline-primary mt-4">Volver al sitio principal</a>
+                  <a href="index.html" class="btn btn-outline-primary mt-4"
+                    >Volver al sitio principal</a
+                  >
                 </div>
                 <div id="display-container">
                   <div class="header">
@@ -69,11 +76,14 @@
                     </div>
                     <div class="timer-div">
                       <img src="assets/img/timer-icon.svg" />
-                      <span class="time-left">30s</span>
+                      <span class="time-left">45s</span>
                     </div>
                   </div>
                   <div id="container">
                     <!-- questions and options will be displayed here -->
+                  </div>
+                  <div id="restart-alert" class="pt-4 text-center d-none">
+                    <h5>El test se reiniciará en <span>5s</span> ...</h5>
                   </div>
                   <button id="next-button" class="btn btn-primary disabled">
                     Siguiente

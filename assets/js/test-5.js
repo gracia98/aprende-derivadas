@@ -9,10 +9,13 @@ let restart = document.getElementById("restart");
 let userScore = document.getElementById("user-score");
 let startScreen = document.querySelector(".start-screen");
 let startButton = document.getElementById("start-button");
+let restartAlert = document.getElementById("restart-alert");
 let questionCount;
 let scoreCount = 0;
-let count = 30;
+let count = 45;
 let countdown;
+let restartCount = 5;
+let restartCountdown;
 
 //Questions and Options array
 
@@ -86,11 +89,31 @@ const quizLv1 = [
 ];
 
 //Restart Quiz
-restart.addEventListener("click", () => {
-  initial();
-  displayContainer.classList.remove("hide");
-  scoreContainer.classList.add("hide");
-});
+restart.addEventListener(
+  "click",
+  (restartQuiz = () => {
+    initial();
+    displayContainer.classList.remove("hide");
+    scoreContainer.classList.add("hide");
+    restartAlert.classList.replace("d-block", "d-none");
+  })
+);
+
+//Restart Alert Display
+const restartAlertDisplay = () => {
+  restartCount = 5;
+  restartAlert.querySelector("span").innerHTML = `${restartCount}s`;
+  restartAlert.classList.replace("d-none", "d-block");
+
+  restartCountdown = setInterval(() => {
+    restartCount--;
+    restartAlert.querySelector("span").innerHTML = `${restartCount}s`;
+    if (restartCount == 0) {
+      clearInterval(restartCountdown);
+      restartQuiz();
+    }
+  }, 1000);
+};
 
 //Next Button
 nextBtn.addEventListener(
@@ -112,7 +135,7 @@ nextBtn.addEventListener(
         questionCount + 1 + " de " + quizLv1.length + " Preguntas";
       //display quiz
       quizDisplay(questionCount);
-      count = 30;
+      count = 45;
       clearInterval(countdown);
       timerDisplay();
     }
@@ -125,9 +148,14 @@ const timerDisplay = () => {
   countdown = setInterval(() => {
     count--;
     timeLeft.innerHTML = `${count}s`;
+
+    if (count == 5) {
+      restartAlertDisplay();
+    }
+
     if (count == 0) {
       clearInterval(countdown);
-      displayNext();
+      //displayNext();
     }
   }, 1000);
 };
@@ -184,9 +212,11 @@ function checker(userOption) {
     userOption.classList.add("correct");
     scoreCount++;
     nextBtn.classList.remove("disabled");
+    clearInterval(restartCountdown);
+    restartAlert.classList.replace("d-block", "d-none");
   } else {
     userOption.classList.add("incorrect");
-    nextBtn.classList.remove("disabled");
+    //nextBtn.classList.remove("disabled");
     //For marking the correct option
     options.forEach((element) => {
       if (
@@ -195,6 +225,8 @@ function checker(userOption) {
         element.classList.add("correct");
       }
     });
+    //muestra la alerta de reinicio
+    restartAlertDisplay();
   }
 
   //clear interval(stop timer)
@@ -210,7 +242,7 @@ function initial() {
   quizContainer.innerHTML = "";
   questionCount = 0;
   scoreCount = 0;
-  count = 30;
+  count = 45;
   clearInterval(countdown);
   timerDisplay();
   quizCreator();

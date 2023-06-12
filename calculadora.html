@@ -143,145 +143,232 @@
       }
     </style>
     <div class="container p-2">
-      <div
-        class="calculadora p-4 rounded-4 mx-auto shadow text-center text-white position-relative"
-        style="max-width: 400px; background-color: #232c43"
-      >
-        <h5 class="mb-4">Calculadora de Derivadas</h5>
-        <button
-          type="button"
-          class="btn btn-light rounded-circle position-absolute instrucciones"
-          data-bs-toggle="tooltip"
-          data-bs-title='Ingrese una función y haga clic en "Calc." para obtener su derivada (especificando los repectivos operadores). Ej.: 
-          "3*x^2" ⟶ "6 * x"
-          "sqrt(x^2)" ⟶ "x / sqrt(x^2)"
-          "sin(x)+3*x" ⟶ "cos(x) + 3"
-          "e^(2*x)" ⟶ "2 * e^(2 * x)"
-          "ln(x^2)" ⟶ "2 / x"
-          
-          Funciones soportadas: ln, sqrt(√), sin, cos, tan, cot, sec, csc'
-        >
-          <span>?</span>
-        </button>
-        <div class="input-group mb-2 derive-input">
-          <span class="input-group-text">f(x) = </span>
-          <input type="text" id="derive-input" value="" class="form-control" />
-          <button class="btn" id="derive-button">Calc.</button>
-        </div>
-
-        <div class="row mb-4">
-          <div class="col-3">
+      <div class="row py-4">
+        <div class="col-xl-2 col-lg-1"></div>
+        <div class="col-xl-4 col-lg-5">
+          <div
+            class="calculadora p-4 rounded-4 mx-auto shadow text-center text-white position-relative mb-5"
+            style="max-width: 400px; background-color: #232c43"
+          >
+            <h5 class="mb-4">Calculadora de Derivadas</h5>
             <button
-              onclick="clearDerive()"
-              class="btn btn-clr h-100 w-100 fw-bold"
               type="button"
+              class="btn btn-light rounded-circle position-absolute instrucciones"
+              data-bs-toggle="tooltip"
+              data-bs-title='Ingrese una función y haga clic en "Calc." para obtener su derivada (especificando los repectivos operadores). Ej.: 
+            "3*x^2" ⟶ "6 * x"
+            "sqrt(x^2)" ⟶ "x / sqrt(x^2)"
+            "sin(x)+3*x" ⟶ "cos(x) + 3"
+            "e^(2*x)" ⟶ "2 * e^(2 * x)"
+            "ln(x^2)" ⟶ "2 / x"
+            
+            Funciones soportadas: ln, sqrt(√), sin, cos, tan, cot, sec, csc'
             >
-              CLR
+              <span>?</span>
             </button>
-          </div>
-          <div class="col-9 calc-pad">
-            <div class="row mb-3">
-              <div class="col-4">
-                <button
-                  onclick="writeOperator('+')"
-                  class="btn w-100 fw-bold"
-                  type="button"
-                >
-                  +
-                </button>
-              </div>
-              <div class="col-4">
-                <button
-                  onclick="writeOperator('-')"
-                  class="btn w-100 fw-bold"
-                  type="button"
-                >
-                  -
-                </button>
-              </div>
-              <div class="col-4">
-                <button
-                  onclick="writeOperator('*')"
-                  class="btn w-100 fw-bold"
-                  type="button"
-                >
-                  ×
-                </button>
-              </div>
+            <div class="input-group mb-3 derive-input">
+              <span class="input-group-text">f(x) = </span>
+              <input
+                type="text"
+                id="derive-input"
+                value=""
+                class="form-control"
+              />
+              <button class="btn" id="derive-button">Calc.</button>
             </div>
-            <div class="row mb-3">
-              <div class="col-4">
-                <button
-                  onclick="writeOperator('/')"
-                  class="btn w-100 fw-bold"
-                  type="button"
-                >
-                  ÷
-                </button>
-              </div>
-              <div class="col-4">
-                <button
-                  onclick="writeOperator('^')"
-                  class="btn w-100 fw-bold"
-                  type="button"
-                >
-                  ^
-                </button>
-              </div>
-              <div class="col-4">
-                <button
-                  onclick="writeOperator('sqrt')"
-                  class="btn w-100 fw-bold"
-                  type="button"
-                >
-                  √
-                </button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-4">
-                <button
-                  onclick="writeOperator('e')"
-                  class="btn w-100 fw-bold"
-                  type="button"
-                >
-                  e
-                </button>
-              </div>
-              <div class="col-4">
-                <button
-                  onclick="writeOperator('(')"
-                  class="btn w-100 fw-bold"
-                  type="button"
-                >
-                  (
-                </button>
-              </div>
-              <div class="col-4">
-                <button
-                  onclick="writeOperator(')')"
-                  class="btn w-100 fw-bold"
-                  type="button"
-                >
-                  )
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="mb-3 p-3 rounded derive-outputs">
-          <h6 class="text-start fw-semibold mb-4">Usted va a derivar:</h6>
-          <p id="preview" class="fs-5"></p>
-        </div>
+            <div class="row mb-4">
+              <div class="col-3">
+                <button
+                  onclick="clearDerive()"
+                  class="btn btn-clr h-100 w-100 fw-bold"
+                  type="button"
+                >
+                  CLR
+                </button>
+              </div>
+              <div class="col-9 calc-pad">
+                <div class="row mb-3">
+                  <div class="col-4">
+                    <button
+                      onclick="writeOperator('+')"
+                      class="btn w-100 fw-bold"
+                      type="button"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <div class="col-4">
+                    <button
+                      onclick="writeOperator('-')"
+                      class="btn w-100 fw-bold"
+                      type="button"
+                    >
+                      -
+                    </button>
+                  </div>
+                  <div class="col-4">
+                    <button
+                      onclick="writeOperator('*')"
+                      class="btn w-100 fw-bold"
+                      type="button"
+                    >
+                      ×
+                    </button>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-4">
+                    <button
+                      onclick="writeOperator('/')"
+                      class="btn w-100 fw-bold"
+                      type="button"
+                    >
+                      ÷
+                    </button>
+                  </div>
+                  <div class="col-4">
+                    <button
+                      onclick="writeOperator('^')"
+                      class="btn w-100 fw-bold"
+                      type="button"
+                    >
+                      ^
+                    </button>
+                  </div>
+                  <div class="col-4">
+                    <button
+                      onclick="writeOperator('sqrt')"
+                      class="btn w-100 fw-bold"
+                      type="button"
+                    >
+                      √
+                    </button>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-4">
+                    <button
+                      onclick="writeOperator('e')"
+                      class="btn w-100 fw-bold"
+                      type="button"
+                    >
+                      e
+                    </button>
+                  </div>
+                  <div class="col-4">
+                    <button
+                      onclick="writeOperator('(')"
+                      class="btn w-100 fw-bold"
+                      type="button"
+                    >
+                      (
+                    </button>
+                  </div>
+                  <div class="col-4">
+                    <button
+                      onclick="writeOperator(')')"
+                      class="btn w-100 fw-bold"
+                      type="button"
+                    >
+                      )
+                    </button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <button
+                      onclick="writeOperator('ln()')"
+                      class="btn w-100 fw-bold"
+                      type="button"
+                    >
+                      ln
+                    </button>
+                  </div>
+                  <div class="col-4">
+                    <button
+                      onclick="writeOperator('sin()')"
+                      class="btn w-100 fw-bold"
+                      type="button"
+                    >
+                      sin
+                    </button>
+                  </div>
+                  <div class="col-4">
+                    <button
+                      onclick="writeOperator('cos()')"
+                      class="btn w-100 fw-bold"
+                      type="button"
+                    >
+                      cos
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-        <div class="p-3 rounded derive-outputs">
-          <h6 class="text-start fw-semibold mb-4">Resultado:</h6>
-          <p>
-            <span id="derive-output" class="fs-5 link-info"></span>
-          </p>
+            <div class="mb-3 p-3 rounded derive-outputs">
+              <h6 class="text-start fw-semibold mb-4">Usted va a derivar:</h6>
+              <p id="preview" class="fs-5"></p>
+            </div>
+
+            <div class="p-3 rounded derive-outputs">
+              <h6 class="text-start fw-semibold mb-4">Resultado:</h6>
+              <p>
+                <span id="derive-output" class="fs-5 link-info"></span>
+              </p>
+            </div>
+            <a href="index.html" class="btn btn-primary mt-4"
+              >Volver al sitio principal</a
+            >
+          </div>
         </div>
-        <a href="index.html" class="btn btn-primary mt-4">Volver al sitio principal</a>
+        <div class="col-xl-4 col-lg-5">
+          <div
+            class="accordion mx-auto"
+            style="max-width: 400px"
+            id="accordionInstrucciones"
+          >
+            <div class="accordion-item bg-light">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button fw-semibold"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
+                  Instrucciones de uso
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse show text-center"
+                data-bs-parent="#accordionInstrucciones"
+              >
+                <div class="accordion-body" style="color: #444b5a">
+                  Ingrese una función y haga clic en "Calc." para obtener su
+                  derivada (especificando los repectivos operadores). Ej.:
+                  <br /><br />
+                  "3*x^2" ⟶ "6 * x"
+                  <br />
+                  "sqrt(x^2)" ⟶ "x / sqrt(x^2)"
+                  <br />
+                  "sin(x)+3*x" ⟶ "cos(x) + 3"
+                  <br />
+                  "e^(2*x)" ⟶ "2 * e^(2 * x)"
+                  <br />
+                  "ln(x^2)" ⟶ "2 / x"
+                  <br /><br />
+                  Funciones soportadas: ln, sqrt(√), sin, cos, tan, cot, sec,
+                  csc
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-1"></div>
       </div>
     </div>
     <!--

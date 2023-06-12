@@ -9,40 +9,82 @@ let restart = document.getElementById("restart");
 let userScore = document.getElementById("user-score");
 let startScreen = document.querySelector(".start-screen");
 let startButton = document.getElementById("start-button");
+let restartAlert = document.getElementById("restart-alert");
 let questionCount;
 let scoreCount = 0;
-let count = 60 ;
+let count = 60;
 let countdown;
+let restartCount = 5;
+let restartCountdown;
 
 //Questions and Options array
 
 const quizLv1 = [
   {
     id: "0",
-    question: "El valor de la derivada de una función en un punto puede interpretarse geométricamente, ya que:",
-    options: ["Son figuras geométricas.", "Su punto está en el plano.", "Corresponde con la pendiente de la recta tangente a la gráfica de la función de dicho punto.", "El punto en el plano es geométrico."],
-    correct: "Corresponde con la pendiente de la recta tangente a la gráfica de la función de dicho punto.",
+    question:
+      "El valor de la derivada de una función en un punto puede interpretarse geométricamente, ya que:",
+    options: [
+      "Son figuras geométricas.",
+      "Su punto está en el plano.",
+      "Corresponde con la pendiente de la recta tangente a la gráfica de la función de dicho punto.",
+      "El punto en el plano es geométrico.",
+    ],
+    correct:
+      "Corresponde con la pendiente de la recta tangente a la gráfica de la función de dicho punto.",
   },
   {
     id: "1",
     question: "La derivada se aplica en aquellos casos donde:",
-    options: ["Es necesario recurrir a una explicación correcta.", "Es necesario que la aplicación de una función sea correcta.", "Es necesario tener un movimiento estable.", "Es necesario medir la rapidez con que se produce el cambio de una magnitud o situación."],
-    correct: "Es necesario medir la rapidez con que se produce el cambio de una magnitud o situación.",
+    options: [
+      "Es necesario recurrir a una explicación correcta.",
+      "Es necesario que la aplicación de una función sea correcta.",
+      "Es necesario tener un movimiento estable.",
+      "Es necesario medir la rapidez con que se produce el cambio de una magnitud o situación.",
+    ],
+    correct:
+      "Es necesario medir la rapidez con que se produce el cambio de una magnitud o situación.",
   },
   {
     id: "2",
     question: "El concepto de derivada se define como.",
-    options: ["Una medida de rapidez con la que cambia el valor de dicha función según cambia el valor de dicha función según cambie el valor de su variable dependiente.", "Es una función que se mantiene en un solo lugar.", "Una medida de la rapidez con la que cambia el valor de dicha función según cambie el valor de su variable independiente.", "Es una función que representa cambios iguales."],
-    correct: "Una medida de la rapidez con la que cambia el valor de dicha función según cambie el valor de su variable independiente.",
+    options: [
+      "Una medida de rapidez con la que cambia el valor de dicha función según cambia el valor de dicha función según cambie el valor de su variable dependiente.",
+      "Es una función que se mantiene en un solo lugar.",
+      "Una medida de la rapidez con la que cambia el valor de dicha función según cambie el valor de su variable independiente.",
+      "Es una función que representa cambios iguales.",
+    ],
+    correct:
+      "Una medida de la rapidez con la que cambia el valor de dicha función según cambie el valor de su variable independiente.",
   },
 ];
 
 //Restart Quiz
-restart.addEventListener("click", () => {
-  initial();
-  displayContainer.classList.remove("hide");
-  scoreContainer.classList.add("hide");
-});
+restart.addEventListener(
+  "click",
+  (restartQuiz = () => {
+    initial();
+    displayContainer.classList.remove("hide");
+    scoreContainer.classList.add("hide");
+    restartAlert.classList.replace("d-block", "d-none");
+  })
+);
+
+//Restart Alert Display
+const restartAlertDisplay = () => {
+  restartCount = 5;
+  restartAlert.querySelector("span").innerHTML = `${restartCount}s`;
+  restartAlert.classList.replace("d-none", "d-block");
+
+  restartCountdown = setInterval(() => {
+    restartCount--;
+    restartAlert.querySelector("span").innerHTML = `${restartCount}s`;
+    if (restartCount == 0) {
+      clearInterval(restartCountdown);
+      restartQuiz();
+    }
+  }, 1000);
+};
 
 //Next Button
 nextBtn.addEventListener(
@@ -77,9 +119,14 @@ const timerDisplay = () => {
   countdown = setInterval(() => {
     count--;
     timeLeft.innerHTML = `${count}s`;
+
+    if (count == 5) {
+      restartAlertDisplay();
+    }
+
     if (count == 0) {
       clearInterval(countdown);
-      displayNext();
+      //displayNext();
     }
   }, 1000);
 };
@@ -136,6 +183,8 @@ function checker(userOption) {
     userOption.classList.add("correct");
     scoreCount++;
     nextBtn.classList.remove("disabled");
+    clearInterval(restartCountdown);
+    restartAlert.classList.replace("d-block", "d-none");
   } else {
     userOption.classList.add("incorrect");
     nextBtn.classList.remove("disabled");
