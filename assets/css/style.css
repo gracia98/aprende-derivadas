@@ -30,12 +30,11 @@ h6 {
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
-.back-to-top {
+.float-btn {
   position: fixed;
   visibility: hidden;
   opacity: 0;
   right: 15px;
-  bottom: 15px;
   z-index: 996;
   background: #4155c7;
   width: 40px;
@@ -44,20 +43,27 @@ h6 {
   transition: all 0.4s;
 }
 
-.back-to-top i {
+.float-btn i {
   font-size: 28px;
   color: #fff;
   line-height: 0;
 }
 
-.back-to-top:hover {
+.float-btn:hover {
   background: #7ed899;
   color: #fff;
 }
 
-.back-to-top.active {
+.float-btn {
   visibility: visible;
   opacity: 1;
+}
+
+.float-btn.float-next {
+  bottom: 15px;
+}
+.float-btn.float-prev {
+  bottom: 60px;
 }
 
 /*--------------------------------------------------------------
